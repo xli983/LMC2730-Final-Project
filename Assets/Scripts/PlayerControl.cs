@@ -19,6 +19,6 @@ public class PlayerControl : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
+        rb.velocity = new Vector3(move.x * speed, rb.velocity.y, move.z * speed);
     }
 }
