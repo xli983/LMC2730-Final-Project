@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public CharacterController controller;
-
+    [SerializeField] private Rigidbody rb;
     public float speed = 6f;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +19,6 @@ public class PlayerControl : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        rb.velocity = new Vector3(move.x, rb.velocity.y, move.z);
     }
 }
