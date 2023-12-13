@@ -5,8 +5,9 @@ using UnityEngine;
 public class PassCodeBox : MonoBehaviour
 {
     private bool keyPressReady, padOpen, boxOpened, escapeDisabled;
-    [SerializeField] private GameObject playerCamera, Etext, keyPad;
+    [SerializeField] private GameObject playerCamera, Etext, keyPad, card;
     [SerializeField] private Animator boxAnim;
+    private Card cardScript;
     void Start()
     {
         keyPressReady = false;
@@ -14,6 +15,8 @@ public class PassCodeBox : MonoBehaviour
         boxOpened = false;
         escapeDisabled = false;
         keyPad = playerCamera.transform.GetChild(0).gameObject;
+        cardScript = card.GetComponent<Card>();
+        cardScript.enabled = false;
     }
 
     // Update is called once per frame
@@ -77,6 +80,8 @@ public class PassCodeBox : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         padOpen = false;
         boxAnim.SetBool("boxOpen", true);
+        yield return new WaitForSecondsRealtime(1);
+        cardScript.enabled = true;
     }
 
     public void accessDeny()
