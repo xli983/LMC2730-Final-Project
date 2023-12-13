@@ -7,18 +7,22 @@ public class CheckDoorOpenable : MonoBehaviour
     private bool keyPressReady;
     [SerializeField] private GameObject player, Etext;
     [SerializeField] private Animator anim;
+    private SceneTransfer sceneTransfer;
     void Start()
     {
         keyPressReady = false;
+        sceneTransfer = UnityEngine.Object.FindObjectsOfType<SceneTransfer>()[0];
     }
 
     void Update()
     {
-        if (keyPressReady & Input.GetKeyDown(KeyCode.E))
+        if (keyPressReady & Input.GetKeyDown(KeyCode.E) & !sceneTransfer.hasCard)
         {
             anim.SetBool("IsPlayerClose", true);
-        } 
-        else if (!keyPressReady & anim.GetBool("IsPlayerClose"))
+        } else if (keyPressReady & Input.GetKeyDown(KeyCode.E) & sceneTransfer.hasCard)
+        {
+            sceneTransfer.NextScene();
+        } else if (!keyPressReady & anim.GetBool("IsPlayerClose"))
         {
             StartCoroutine(DoorClose());
         }
