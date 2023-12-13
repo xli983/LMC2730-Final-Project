@@ -8,6 +8,8 @@ public class CheckDoorOpenable : MonoBehaviour
     [SerializeField] private GameObject player, Etext;
     [SerializeField] private Animator anim;
     private SceneTransfer sceneTransfer;
+    [SerializeField] private GameObject door1, door2;
+    [SerializeField] private Light sensor;
     void Start()
     {
         keyPressReady = false;
@@ -22,7 +24,8 @@ public class CheckDoorOpenable : MonoBehaviour
         } else if (keyPressReady & Input.GetKeyDown(KeyCode.E) & sceneTransfer.hasCard)
         {
             sceneTransfer.NextScene();
-        } else if (!keyPressReady & anim.GetBool("IsPlayerClose"))
+        }
+        else if (!keyPressReady & anim.GetBool("IsPlayerClose"))
         {
             StartCoroutine(DoorClose());
         }
