@@ -1,0 +1,4 @@
+- WASD to move around
+- E for Major interaction
+- Escape to close the keypad
+- f1 to quit game at anytime

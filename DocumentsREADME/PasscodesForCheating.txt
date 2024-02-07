@@ -1,0 +1,2 @@
+The first code is the date of the video: 0503 or 503
+The seccond code is the camera movements of the video: up up up up right left left right down
